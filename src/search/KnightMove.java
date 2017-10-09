@@ -24,12 +24,7 @@ public class KnightMove  {
 
 	public ArrayList<KnightMove> get_children() {
 		this.children = new ArrayList<KnightMove>();
-
-	
 		
-		
-
-
 		for(int sign_x : DELTA) {
 			for(int sign_y : DELTA) {
 				for(int k = 0; k < 2; ++k) {
@@ -44,12 +39,8 @@ public class KnightMove  {
 					
 					
 					KnightMove move = new KnightMove(new_coords, this);
-					//System.out.println(move.to_string());
-					children.add(move);
 					
-					for(int i = 0; i < children.size(); ++i) {
-						System.out.println(children.get(i).to_string());
-					}
+					children.add(move);
 				}
 			}
 		}
@@ -75,7 +66,7 @@ public class KnightMove  {
 		return this.parent;
 	}
 	
-	public String to_string() {
+	public String to_family_string() {
 		String self_string =  "[" + String.valueOf(coords[0]) + ", " +
 				String.valueOf(coords[1]) + "]";
 		
@@ -94,6 +85,11 @@ public class KnightMove  {
 		}
 		
 		return parent_string + " >> " + self_string + " >> " + child_string;
+	}
+	
+	public String to_string() {
+		return "[" + String.valueOf(coords[0]) + ", " +
+				String.valueOf(coords[1]) + "]";
 	}
 
 	public int[] get_coords() {

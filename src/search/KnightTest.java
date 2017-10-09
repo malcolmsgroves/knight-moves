@@ -19,16 +19,16 @@ public class KnightTest {
 //		System.out.println("Enter target y coordinate: ");
 //		target[1] = scan.nextInt();
 		
-		start[0] = 0;
-		start[1] = 0;
-		target[0] = 2;
+		start[0] = 7;
+		start[1] = 7;
+		target[0] = 6;
 		target[1] = 4;
 		
 		KnightSearch search = new KnightSearch(start, target);
 		ArrayList<KnightMove> path = search.knight_BFS();
 		
 		for(int i = 0; i < path.size(); ++i) {
-			System.out.println(path.get(i).to_string());
+			System.out.print(" >> " + path.get(i).to_string());
 		}
 	}
 

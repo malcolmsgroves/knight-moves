@@ -2,19 +2,17 @@ package search;
 
 import java.util.ArrayList;
 
+/*
+ 	KnightSearch implements a breadth-first search algorithm
+ 	to find the shortest path for a chess knight between two
+ 	coordinates on a chess board size DIMENSIONS x DIMENSIONS.
+ 	
+ 	The graph was implemented with OOP and the class has-a
+ 	KnightMove instance root node. Moves are stored in a queue
+ 	and dequeued when the algorithm moves to the next level
+ 	in the graph.
+ */
 public class KnightSearch {
-
-	/*
-	 * Get an initial position
-	 * while(solution not found) {
-	 * queue positions & add to visited;
-	 * create new positions (should be on board bc Knight checks);
-	 * dequeue old postions;
-	 * delete if already visited new positions;
-	 * check if new positions contain solution;
-	 * 
-	 */
-
 
 	private static final int DIMENSIONS = 10;
 
@@ -23,7 +21,12 @@ public class KnightSearch {
 	private int[] target;
 	private KnightMove root;
 
-	// constructor takes a starting position and a target position
+	
+	/* Constructor
+	 * 		Takes a start and an end position for the
+	 * search. Sets the root of the KnightMove instance
+	 * and instantiates the not_visited array.
+	 */
 	public KnightSearch(int[] start, int[] target) {
 		move_queue = new ArrayList<KnightMove>();
 		not_visited = new boolean[DIMENSIONS][DIMENSIONS];
@@ -37,6 +40,7 @@ public class KnightSearch {
 			}
 		}
 
+		// visit the root node
 		enqueue(root);
 		not_visited[start[0]][start[1]] = false;
 	}
@@ -49,20 +53,17 @@ public class KnightSearch {
 	 */
 	public ArrayList<KnightMove> knight_BFS() {
 
-
-
 		while(true) {
+			
+			// take a move off the queue and use it to generate
+			// new moves
 			KnightMove move = dequeue();
-			
-			//System.out.println(move.to_string());
-			
 			ArrayList<KnightMove> new_moves = move.get_children();
 			
 			for(int i = 0; i < new_moves.size(); ++i) {
 
 				KnightMove potential_move = new_moves.get(i);
 				
-				//System.out.println("PotMove: " + potential_move.to_string());
 				// if the move is on board and unvisited
 				if(is_valid(potential_move)) {
 
@@ -89,10 +90,12 @@ public class KnightSearch {
 		return in_bounds && not_visited[coords[0]][coords[1]];
 	}
 
-
+	// add a move to the end of the queue
 	private void enqueue(KnightMove move) {
 		move_queue.add(move);
 	}
+	
+	// remove a move from the front of the queue and return it
 	private KnightMove dequeue() {
 		return move_queue.remove(0);
 	}
