@@ -20,4 +20,7 @@ ant clean
 ```
 
 ## Search
-This program performs a breadth-first search for the shortest path. Moves are queued when created and dequeued when the knight moves from the position. Additionally, previously visited positions are avoided in future moves.
+This program performs a breadth-first search for the shortest path. The graph is created using OOP with nodes that point to a parent and children nodes. During breadth-first search, the root node is the starting position. Moves are queued when created and dequeued when the children are created. Additionally, previously visited positions are avoided in future moves by indexing into a 2D array.
+
+## Improvements
+In order to improve scalability, the graph could be implemented with a hash table that holds adjacency lists.
