@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+  <target name="compile">
+    <mkdir dir="build/classes"/>
+    <javac srcdir="src" destdir="build/classes" includeantruntime="false"/>
+  </target>
+  
+  <target name="jar">
+    <mkdir dir="build/jar"/>
+    <jar destfile="build/jar/knight-moves.jar" basedir="build/classes">
+      <manifest>
+        <attribute name="Main-Class" value="search.KnightTest"/>
+      </manifest>
+    </jar>
+  </target>
+  
+  <target name="run">
+    <java jar="build/jar/knight-moves.jar" fork="true"/>
+  </target>
+  
+  <target name="clean">
+    <delete dir="build"/>
+  </target>
+</project>
