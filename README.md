@@ -1,5 +1,7 @@
 # Knight Moves
-Given an initial position and a final position, find the shortest path a knight can take to move between the two. The positions exist on a 10 x 10 chess board.
+Given an initial position and a final position, find the shortest path a knight can take to move between the two. The positions exist on a 10 x 10 chess board. The set of all possible moves the knight can make is defined in the image below.
+
+![picture alt](https://i.imgur.com/mHQqH08.gif)
 
 ## Running
 Download the project from github and cd into the directory.
